@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>la libre — Catálogo y gestión</title>
+</head>
+<body>
+  <header id="sitio-encabezado">
+    <h1 id="sitio-titulo">la libre</h1>
+    <nav id="nav-principal" aria-label="Navegación principal">
+      <ul>
+        <li><a href="#vista-catalogo" aria-current="page">Catálogo</a></li>
+        <li><a href="#vista-libros">Libros</a></li>
+        <li><a href="#vista-clientes">Clientes</a></li>
+        <li><a href="#vista-ventas">Ventas</a></li>
+        <li><a href="#vista-historial">Historial</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="contenido-principal">
+    <section id="vista-catalogo" aria-labelledby="catalogo-titulo">
+      <h2 id="catalogo-titulo">Catálogo</h2>
+      <h3>Buscar en el catálogo</h3>
+      <label for="catalogo-busqueda">Buscar por título</label>
+      <input id="catalogo-busqueda" type="search" name="busqueda">
+      <button id="catalogo-buscar" type="button">Buscar en catálogo</button>
+      <button id="catalogo-limpiar" type="button">Limpiar búsqueda</button>
+      <h3>Libros disponibles</h3>
+      <p>Nota: los libros siguientes son datos ficticios de ejemplo.</p>
+      <div id="catalogo-lista" data-ejemplo="true">
+        <article data-ejemplo="true">
+          <h4>El jardín de los senderos</h4>
+          <p>ISBN: 978-999-000001-1</p>
+          <p>Editorial: Sur Ejemplar</p>
+          <p>Género: Novela</p>
+          <p>Autores: A. Ejemplo</p>
+          <p>Precio: $12500</p>
+        </article>
+        <article data-ejemplo="true">
+          <h4>Manual básico de astronomía</h4>
+          <p>ISBN: 978-999-000002-8</p>
+          <p>Editorial: Cosmos Ficticio</p>
+          <p>Género: Sin clasificar</p>
+          <p>Autores: B. Muestra</p>
+          <p>Precio: $8900</p>
+        </article>
+        <article data-ejemplo="true">
+          <h4>Cuentos breves para tardes largas</h4>
+          <p>ISBN: 978-999-000003-5</p>
+          <p>Editorial: Hoja Ficticia</p>
+          <p>Género: Cuentos</p>
+          <p>Autores: C. Prueba, D. Ensayo</p>
+          <p>Precio: $6750</p>
+        </article>
+      </div>
+      <div id="catalogo-mensaje" role="status"></div>
+    </section>
+    <section id="vista-libros" aria-labelledby="libros-titulo">
+      <h2 id="libros-titulo">Libros</h2>
+      <h3>Alta de libro</h3>
+      <form id="libros-form" action="#" method="get">
+        <label for="libro-titulo">Título</label>
+        <input id="libro-titulo" type="text" name="titulo">
+        <label for="libro-isbn">ISBN</label>
+        <input id="libro-isbn" type="text" name="isbn">
+        <label for="libro-precio">Precio</label>
+        <input id="libro-precio" type="number" name="precio" min="0.01" step="0.01">
+        <label for="libro-editorial">Editorial</label>
+        <input id="libro-editorial" type="text" name="editorial">
+        <label for="libro-genero">Género</label>
+        <select id="libro-genero" name="genero">
+          <option value="novela">Novela</option>
+          <option value="cuentos">Cuentos</option>
+          <option value="ensayo">Ensayo</option>
+          <option value="sin-clasificar">Sin clasificar</option>
+        </select>
+        <label for="libro-autores">Autores</label>
+        <input id="libro-autores" type="text" name="autores">
+        <button type="submit">Registrar libro</button>
+        <button type="reset">Limpiar formulario</button>
+      </form>
+      <h3>Listado de libros</h3>
+      <p>Nota: las filas siguientes son datos ficticios de ejemplo.</p>
+      <table id="libros-tabla" data-ejemplo="true">
+        <caption>Listado de libros de ejemplo (datos ficticios)</caption>
+        <thead>
+          <tr>
+            <th scope="col">Título</th>
+            <th scope="col">ISBN</th>
+            <th scope="col">Editorial</th>
+            <th scope="col">Género</th>
+            <th scope="col">Autores</th>
+            <th scope="col">Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-ejemplo="true">
+            <td>El jardín de los senderos</td>
+            <td>978-999-000001-1</td>
+            <td>Sur Ejemplar</td>
+            <td>Novela</td>
+            <td>A. Ejemplo</td>
+            <td>$12500</td>
+          </tr>
+          <tr data-ejemplo="true">
+            <td>Manual básico de astronomía</td>
+            <td>978-999-000002-8</td>
+            <td>Cosmos Ficticio</td>
+            <td>Sin clasificar</td>
+            <td>B. Muestra</td>
+            <td>$8900</td>
+          </tr>
+          <tr data-ejemplo="true">
+            <td>Cuentos breves para tardes largas</td>
+            <td>978-999-000003-5</td>
+            <td>Hoja Ficticia</td>
+            <td>Cuentos</td>
+            <td>C. Prueba, D. Ensayo</td>
+            <td>$6750</td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="libros-mensaje" role="status"></div>
+    </section>
+    <section id="vista-clientes" aria-labelledby="clientes-titulo">
+      <h2 id="clientes-titulo">Clientes</h2>
+      <h3>Alta de cliente</h3>
+      <form id="clientes-form" action="#" method="get">
+        <label for="cliente-nombre">Nombre completo</label>
+        <input id="cliente-nombre" type="text" name="nombre">
+        <label for="cliente-email">Correo electrónico</label>
+        <input id="cliente-email" type="email" name="email">
+        <button type="submit">Registrar cliente</button>
+        <button type="reset">Limpiar formulario</button>
+      </form>
+      <h3>Listado de clientes</h3>
+      <p>Nota: las filas siguientes son datos ficticios de ejemplo.</p>
+      <table id="clientes-tabla" data-ejemplo="true">
+        <caption>Listado de clientes de ejemplo (datos ficticios)</caption>
+        <thead>
+          <tr>
+            <th scope="col">Nombre completo</th>
+            <th scope="col">Correo electrónico</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-ejemplo="true">
+            <td>Ana Pérez Ejemplo</td>
+            <td>ana.ejemplo@ficticio.com</td>
+          </tr>
+          <tr data-ejemplo="true">
+            <td>Bruno Gómez Muestra</td>
+            <td>bruno.muestra@ficticio.com</td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="clientes-mensaje" role="status"></div>
+    </section>
+    <section id="vista-ventas" aria-labelledby="ventas-titulo">
+      <h2 id="ventas-titulo">Ventas</h2>
+      <h3>Cliente de la venta</h3>
+      <label for="venta-cliente">Cliente</label>
+      <select id="venta-cliente" name="cliente">
+        <option value="ana">Ana Pérez Ejemplo</option>
+        <option value="bruno">Bruno Gómez Muestra</option>
+      </select>
+      <h3>Renglones de la venta</h3>
+      <label for="venta-libro">Libro</label>
+      <select id="venta-libro" name="libro">
+        <option value="senderos">El jardín de los senderos</option>
+        <option value="astronomia">Manual básico de astronomía</option>
+        <option value="cuentos">Cuentos breves para tardes largas</option>
+      </select>
+      <label for="venta-cantidad">Cantidad</label>
+      <input id="venta-cantidad" type="number" name="cantidad" min="1" step="1" value="1">
+      <button id="venta-agregar" type="button">Agregar renglón</button>
+      <table id="ventas-renglones" data-ejemplo="true">
+        <caption>Renglones de la venta en curso (ejemplo ficticio)</caption>
+        <thead>
+          <tr>
+            <th scope="col">Libro</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Precio unitario</th>
+            <th scope="col">Subtotal</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-ejemplo="true">
+            <td>El jardín de los senderos</td>
+            <td>1</td>
+            <td>$12500</td>
+            <td>$12500</td>
+            <td><button type="button">Quitar renglón</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Resumen de la venta</h3>
+      <div id="ventas-total">Total: $12500 (ejemplo ficticio)</div>
+      <button id="ventas-confirmar" type="submit">Confirmar venta</button>
+      <button id="ventas-cancelar" type="reset">Cancelar venta</button>
+      <div id="ventas-mensaje" role="status"></div>
+    </section>
+    <section id="vista-historial" aria-labelledby="historial-titulo">
+      <h2 id="historial-titulo">Historial</h2>
+      <h3>Ventas registradas</h3>
+      <p>Nota: las ventas siguientes son datos ficticios de ejemplo.</p>
+      <table id="historial-tabla" data-ejemplo="true">
+        <caption>Historial de ventas de ejemplo (datos ficticios)</caption>
+        <thead>
+          <tr>
+            <th scope="col">Identificador</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Total</th>
+            <th scope="col">Detalle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-ejemplo="true">
+            <td>V-001</td>
+            <td>2026-09-12</td>
+            <td>Ana Pérez Ejemplo</td>
+            <td>$21400</td>
+            <td><button type="button">Ver detalle</button></td>
+          </tr>
+          <tr data-ejemplo="true">
+            <td>V-002</td>
+            <td>2026-10-02</td>
+            <td>Bruno Gómez Muestra</td>
+            <td>$6750</td>
+            <td><button type="button">Ver detalle</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="historial-mensaje" role="status"></div>
+      <h3>Detalle de la venta</h3>
+      <div id="historial-detalle" data-ejemplo="true">
+        <p>Venta V-001 (ejemplo ficticio)</p>
+        <p>Fecha: 2026-09-12</p>
+        <p>Cliente: Ana Pérez Ejemplo</p>
+        <ul>
+          <li>El jardín de los senderos — cantidad 1 — $12500</li>
+          <li>Manual básico de astronomía — cantidad 1 — $8900</li>
+        </ul>
+        <p>Total: $21400</p>
+      </div>
+      <div id="historial-detalle-mensaje" role="status"></div>
+    </section>
+  </main>
+  <footer id="sitio-pie">
+    <p>Trabajo práctico — todos los datos mostrados son ejemplos ficticios.</p>
+  </footer>
+</body>
+</html>
