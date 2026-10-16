@@ -4,13 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>la libre — Catálogo y gestión</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/componentes.css">
 </head>
 <body>
-  <header id="sitio-encabezado">
+  <header id="sitio-encabezado" class="contenedor">
     <h1 id="sitio-titulo">la libre</h1>
-    <nav id="nav-principal" aria-label="Navegación principal">
+    <nav id="nav-principal" class="navegacion" aria-label="Navegación principal">
       <ul>
-        <li><a href="#vista-catalogo" aria-current="page">Catálogo</a></li>
+        <li><a href="#vista-catalogo" aria-current="page" class="navegacion__enlace--activo">Catálogo</a></li>
         <li><a href="#vista-libros">Libros</a></li>
         <li><a href="#vista-clientes">Clientes</a></li>
         <li><a href="#vista-ventas">Ventas</a></li>
@@ -18,18 +21,18 @@
       </ul>
     </nav>
   </header>
-  <main id="contenido-principal">
-    <section id="vista-catalogo" aria-labelledby="catalogo-titulo">
+  <main id="contenido-principal" class="contenedor">
+    <section id="vista-catalogo" class="vista" aria-labelledby="catalogo-titulo">
       <h2 id="catalogo-titulo">Catálogo</h2>
       <h3>Buscar en el catálogo</h3>
-      <label for="catalogo-busqueda">Buscar por título</label>
-      <input id="catalogo-busqueda" type="search" name="busqueda">
-      <button id="catalogo-buscar" type="button">Buscar en catálogo</button>
-      <button id="catalogo-limpiar" type="button">Limpiar búsqueda</button>
+      <label class="campo__etiqueta" for="catalogo-busqueda">Buscar por título</label>
+      <input class="campo__control" id="catalogo-busqueda" type="search" name="busqueda">
+      <button id="catalogo-buscar" class="boton boton--primario" type="button">Buscar en catálogo</button>
+      <button id="catalogo-limpiar" class="boton" type="button">Limpiar búsqueda</button>
       <h3>Libros disponibles</h3>
       <p>Nota: los libros siguientes son datos ficticios de ejemplo.</p>
-      <div id="catalogo-lista" data-ejemplo="true">
-        <article data-ejemplo="true">
+      <div id="catalogo-lista" class="grilla-catalogo" data-ejemplo="true">
+        <article class="tarjeta-libro" data-ejemplo="true">
           <h4>El jardín de los senderos</h4>
           <p>ISBN: 978-999-000001-1</p>
           <p>Editorial: Sur Ejemplar</p>
@@ -37,7 +40,7 @@
           <p>Autores: A. Ejemplo</p>
           <p>Precio: $12500</p>
         </article>
-        <article data-ejemplo="true">
+        <article class="tarjeta-libro" data-ejemplo="true">
           <h4>Manual básico de astronomía</h4>
           <p>ISBN: 978-999-000002-8</p>
           <p>Editorial: Cosmos Ficticio</p>
@@ -45,7 +48,7 @@
           <p>Autores: B. Muestra</p>
           <p>Precio: $8900</p>
         </article>
-        <article data-ejemplo="true">
+        <article class="tarjeta-libro" data-ejemplo="true">
           <h4>Cuentos breves para tardes largas</h4>
           <p>ISBN: 978-999-000003-5</p>
           <p>Editorial: Hoja Ficticia</p>
@@ -54,35 +57,36 @@
           <p>Precio: $6750</p>
         </article>
       </div>
-      <div id="catalogo-mensaje" role="status"></div>
+      <div id="catalogo-mensaje" role="status" class="mensaje"></div>
     </section>
-    <section id="vista-libros" aria-labelledby="libros-titulo">
+    <section id="vista-libros" class="vista" aria-labelledby="libros-titulo">
       <h2 id="libros-titulo">Libros</h2>
       <h3>Alta de libro</h3>
-      <form id="libros-form" action="#" method="get">
-        <label for="libro-titulo">Título</label>
-        <input id="libro-titulo" type="text" name="titulo">
-        <label for="libro-isbn">ISBN</label>
-        <input id="libro-isbn" type="text" name="isbn">
-        <label for="libro-precio">Precio</label>
-        <input id="libro-precio" type="number" name="precio" min="0.01" step="0.01">
-        <label for="libro-editorial">Editorial</label>
-        <input id="libro-editorial" type="text" name="editorial">
-        <label for="libro-genero">Género</label>
-        <select id="libro-genero" name="genero">
+      <form id="libros-form" class="formulario" action="#" method="get">
+        <label class="campo__etiqueta" for="libro-titulo">Título</label>
+        <input class="campo__control" id="libro-titulo" type="text" name="titulo">
+        <label class="campo__etiqueta" for="libro-isbn">ISBN</label>
+        <input class="campo__control" id="libro-isbn" type="text" name="isbn">
+        <label class="campo__etiqueta" for="libro-precio">Precio</label>
+        <input class="campo__control" id="libro-precio" type="number" name="precio" min="0.01" step="0.01">
+        <label class="campo__etiqueta" for="libro-editorial">Editorial</label>
+        <input class="campo__control" id="libro-editorial" type="text" name="editorial">
+        <label class="campo__etiqueta" for="libro-genero">Género</label>
+        <select class="campo__control" id="libro-genero" name="genero">
           <option value="novela">Novela</option>
           <option value="cuentos">Cuentos</option>
           <option value="ensayo">Ensayo</option>
           <option value="sin-clasificar">Sin clasificar</option>
         </select>
-        <label for="libro-autores">Autores</label>
-        <input id="libro-autores" type="text" name="autores">
-        <button type="submit">Registrar libro</button>
-        <button type="reset">Limpiar formulario</button>
+        <label class="campo__etiqueta" for="libro-autores">Autores</label>
+        <input class="campo__control" id="libro-autores" type="text" name="autores">
+        <button type="submit" class="boton boton--primario">Registrar libro</button>
+        <button type="reset" class="boton">Limpiar formulario</button>
       </form>
       <h3>Listado de libros</h3>
       <p>Nota: las filas siguientes son datos ficticios de ejemplo.</p>
-      <table id="libros-tabla" data-ejemplo="true">
+      <div class="tabla-contenedor">
+        <table class="tabla" id="libros-tabla" data-ejemplo="true">
         <caption>Listado de libros de ejemplo (datos ficticios)</caption>
         <thead>
           <tr>
@@ -120,23 +124,25 @@
             <td>$6750</td>
           </tr>
         </tbody>
-      </table>
-      <div id="libros-mensaje" role="status"></div>
+        </table>
+      </div>
+      <div id="libros-mensaje" role="status" class="mensaje"></div>
     </section>
-    <section id="vista-clientes" aria-labelledby="clientes-titulo">
+    <section id="vista-clientes" class="vista" aria-labelledby="clientes-titulo">
       <h2 id="clientes-titulo">Clientes</h2>
       <h3>Alta de cliente</h3>
-      <form id="clientes-form" action="#" method="get">
-        <label for="cliente-nombre">Nombre completo</label>
-        <input id="cliente-nombre" type="text" name="nombre">
-        <label for="cliente-email">Correo electrónico</label>
-        <input id="cliente-email" type="email" name="email">
-        <button type="submit">Registrar cliente</button>
-        <button type="reset">Limpiar formulario</button>
+      <form id="clientes-form" class="formulario" action="#" method="get">
+        <label class="campo__etiqueta" for="cliente-nombre">Nombre completo</label>
+        <input class="campo__control" id="cliente-nombre" type="text" name="nombre">
+        <label class="campo__etiqueta" for="cliente-email">Correo electrónico</label>
+        <input class="campo__control" id="cliente-email" type="email" name="email">
+        <button type="submit" class="boton boton--primario">Registrar cliente</button>
+        <button type="reset" class="boton">Limpiar formulario</button>
       </form>
       <h3>Listado de clientes</h3>
       <p>Nota: las filas siguientes son datos ficticios de ejemplo.</p>
-      <table id="clientes-tabla" data-ejemplo="true">
+      <div class="tabla-contenedor">
+        <table class="tabla" id="clientes-tabla" data-ejemplo="true">
         <caption>Listado de clientes de ejemplo (datos ficticios)</caption>
         <thead>
           <tr>
@@ -154,28 +160,30 @@
             <td>bruno.muestra@ficticio.com</td>
           </tr>
         </tbody>
-      </table>
-      <div id="clientes-mensaje" role="status"></div>
+        </table>
+      </div>
+      <div id="clientes-mensaje" role="status" class="mensaje"></div>
     </section>
-    <section id="vista-ventas" aria-labelledby="ventas-titulo">
+    <section id="vista-ventas" class="vista" aria-labelledby="ventas-titulo">
       <h2 id="ventas-titulo">Ventas</h2>
       <h3>Cliente de la venta</h3>
-      <label for="venta-cliente">Cliente</label>
-      <select id="venta-cliente" name="cliente">
+      <label class="campo__etiqueta" for="venta-cliente">Cliente</label>
+      <select class="campo__control" id="venta-cliente" name="cliente">
         <option value="ana">Ana Pérez Ejemplo</option>
         <option value="bruno">Bruno Gómez Muestra</option>
       </select>
       <h3>Renglones de la venta</h3>
-      <label for="venta-libro">Libro</label>
-      <select id="venta-libro" name="libro">
+      <label class="campo__etiqueta" for="venta-libro">Libro</label>
+      <select class="campo__control" id="venta-libro" name="libro">
         <option value="senderos">El jardín de los senderos</option>
         <option value="astronomia">Manual básico de astronomía</option>
         <option value="cuentos">Cuentos breves para tardes largas</option>
       </select>
-      <label for="venta-cantidad">Cantidad</label>
-      <input id="venta-cantidad" type="number" name="cantidad" min="1" step="1" value="1">
-      <button id="venta-agregar" type="button">Agregar renglón</button>
-      <table id="ventas-renglones" data-ejemplo="true">
+      <label class="campo__etiqueta" for="venta-cantidad">Cantidad</label>
+      <input class="campo__control" id="venta-cantidad" type="number" name="cantidad" min="1" step="1" value="1">
+      <button id="venta-agregar" class="boton boton--primario" type="button">Agregar renglón</button>
+      <div class="tabla-contenedor">
+        <table class="tabla" id="ventas-renglones" data-ejemplo="true">
         <caption>Renglones de la venta en curso (ejemplo ficticio)</caption>
         <thead>
           <tr>
@@ -192,21 +200,23 @@
             <td>1</td>
             <td>$12500</td>
             <td>$12500</td>
-            <td><button type="button">Quitar renglón</button></td>
+            <td><button type="button" class="boton boton--peligro">Quitar renglón</button></td>
           </tr>
         </tbody>
-      </table>
+        </table>
+      </div>
       <h3>Resumen de la venta</h3>
-      <div id="ventas-total">Total: $12500 (ejemplo ficticio)</div>
-      <button id="ventas-confirmar" type="submit">Confirmar venta</button>
-      <button id="ventas-cancelar" type="reset">Cancelar venta</button>
-      <div id="ventas-mensaje" role="status"></div>
+      <div id="ventas-total" class="mensaje">Total: $12500 (ejemplo ficticio)</div>
+      <button id="ventas-confirmar" class="boton boton--primario" type="submit">Confirmar venta</button>
+      <button id="ventas-cancelar" class="boton boton--peligro" type="reset">Cancelar venta</button>
+      <div id="ventas-mensaje" role="status" class="mensaje"></div>
     </section>
-    <section id="vista-historial" aria-labelledby="historial-titulo">
+    <section id="vista-historial" class="vista" aria-labelledby="historial-titulo">
       <h2 id="historial-titulo">Historial</h2>
       <h3>Ventas registradas</h3>
       <p>Nota: las ventas siguientes son datos ficticios de ejemplo.</p>
-      <table id="historial-tabla" data-ejemplo="true">
+      <div class="tabla-contenedor">
+        <table class="tabla" id="historial-tabla" data-ejemplo="true">
         <caption>Historial de ventas de ejemplo (datos ficticios)</caption>
         <thead>
           <tr>
@@ -223,18 +233,19 @@
             <td>2026-09-12</td>
             <td>Ana Pérez Ejemplo</td>
             <td>$21400</td>
-            <td><button type="button">Ver detalle</button></td>
+            <td><button type="button" class="boton">Ver detalle</button></td>
           </tr>
           <tr data-ejemplo="true">
             <td>V-002</td>
             <td>2026-10-02</td>
             <td>Bruno Gómez Muestra</td>
             <td>$6750</td>
-            <td><button type="button">Ver detalle</button></td>
+            <td><button type="button" class="boton">Ver detalle</button></td>
           </tr>
         </tbody>
-      </table>
-      <div id="historial-mensaje" role="status"></div>
+        </table>
+      </div>
+      <div id="historial-mensaje" role="status" class="mensaje"></div>
       <h3>Detalle de la venta</h3>
       <div id="historial-detalle" data-ejemplo="true">
         <p>Venta V-001 (ejemplo ficticio)</p>
@@ -246,10 +257,10 @@
         </ul>
         <p>Total: $21400</p>
       </div>
-      <div id="historial-detalle-mensaje" role="status"></div>
+      <div id="historial-detalle-mensaje" role="status" class="mensaje"></div>
     </section>
   </main>
-  <footer id="sitio-pie">
+  <footer id="sitio-pie" class="contenedor">
     <p>Trabajo práctico — todos los datos mostrados son ejemplos ficticios.</p>
   </footer>
 </body>

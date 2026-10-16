@@ -1,0 +1,84 @@
+/* base.css — Ejercicio 2: tokens, tipografía de sistema y base accesible.
+ * Orden de cascada: base → layout → componentes.
+ * Versión ESTÁTICA (decisión explícita del usuario "entonces estatico"):
+ * SIN resaltado :target, SIN transiciones/animaciones decorativas.
+ * Se MANTIENEN :focus-visible y prefers-reduced-motion por accesibilidad
+ * (R-05/CA-03), no son decoración. Solo CSS nativo, sin JS (R-06).
+ */
+
+:root {
+  /* Paleta cálida de librería — todos los pares texto/fondo ≥ 4.5:1 (AA).
+   * Valores medidos (luminancia relativa WCAG 2.x, script de verificación):
+   *   texto #1f2937 sobre fondo #fdf8f0        = 13.88:1
+   *   acento #7f1d1d sobre fondo #fdf8f0       = 9.48:1
+   *   blanco #ffffff sobre acento #7f1d1d     = 10.02:1 (botón primario)
+   *   blanco #ffffff sobre peligro #991b1b    = 8.31:1  (botón peligro)
+   *   error #991b1b sobre fondo-error #fef2f2 = 7.60:1
+   *   exito #166534 sobre fondo-exito #f0fdf4 = 6.81:1
+   * Ver reporte de verificación (Tarea 5.2) para el detalle tabla por tabla.
+   */
+  --color-fondo: #fdf8f0;
+  --color-texto: #1f2937;
+  --color-acento: #7f1d1d;
+  --color-acento-texto: #ffffff;
+  --color-error: #991b1b;
+  --color-fondo-error: #fef2f2;
+  --color-exito: #166534;
+  --color-fondo-exito: #f0fdf4;
+  --color-borde: #d6c9b8;
+  --color-fondo-tarjeta: #ffffff;
+
+  --fuente-base: system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --espaciado-s: 0.5rem;
+  --espaciado-m: 1rem;
+  --espaciado-l: 2rem;
+
+  --ancho-max: 72rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-base);
+  line-height: 1.5;
+  /* Red de seguridad documentada (design.md D-5): la garantía real es que
+   * ningún bloque exceda el 100% (ver layout.css + .tabla-contenedor). */
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Foco visible SIEMPRE con reemplazo (R-05): prohibido outline:none sin
+ * reemplazo en todo css/. Este es el único realce dinámico permitido
+ * (accesibilidad, no decoración) y queda ESTÁTICO hasta Ej.3. */
+:focus-visible {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 2px;
+}
+
+/* Base de movimiento seguro (accesibilidad, no decoración): aunque este
+ * change NO incluye transiciones ni animaciones, se deja la guarda para
+ * que ningún comportamiento futuro de desplazamiento suave ignore la
+ * preferencia del usuario. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto;
+  }
+}

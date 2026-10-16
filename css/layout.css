@@ -1,0 +1,94 @@
+/* layout.css — Ejercicio 2: estructura de página con Grid + Flexbox.
+ * documentado según design.md D-4. Mobile-first desde 320px.
+ * Solo CSS nativo, sin JS (R-06). Sin :target, sin transiciones (estático).
+ */
+
+/* Página: Grid de una columna; el ancho lo gobierna .contenedor. */
+body {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+}
+
+.contenedor {
+  width: 100%;
+  max-width: var(--ancho-max);
+  margin-inline: auto;
+  padding-inline: var(--espaciado-m);
+}
+
+/* Cada vista (section) ocupa la columna disponible sin excederla. */
+.vista {
+  min-width: 0;
+  padding-block: var(--espaciado-m);
+}
+
+/* Navegación principal: Flexbox con wrap (D-4) — nunca desborda a 320px. */
+.navegacion ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espaciado-s) var(--espaciado-m);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Catálogo: una columna a 320px; grilla auto-fill desde 48rem (768px). */
+.grilla-catalogo {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--espaciado-m);
+  min-width: 0;
+}
+
+@media (min-width: 48rem) {
+  .grilla-catalogo {
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  }
+}
+
+/* Formularios: Flexbox en columna con gap (D-4). */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaciado-s);
+  min-width: 0;
+}
+
+.grupo-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaciado-s);
+  min-width: 0;
+}
+
+/* Barra de acciones (botones): Flexbox con wrap — a 320px los botones
+ * bajan de línea en vez de cortarse o provocar scroll de página. */
+.barra-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaciado-s);
+}
+
+/* Controles de formulario: nunca exceden el ancho del contenedor. */
+.campo__control,
+.formulario input,
+.formulario select {
+  max-width: 100%;
+}
+
+/* Tablas: el envolvente absorbe el desbordamiento (ver componentes.css).
+ * Ningún bloque de layout supera el 100%: garantía anti scroll horizontal
+ * del body junto con overflow-x de seguridad en base.css (D-5). */
+.tabla-contenedor {
+  max-width: 100%;
+}
+
+main,
+header,
+footer,
+section,
+div {
+  min-width: 0;
+}

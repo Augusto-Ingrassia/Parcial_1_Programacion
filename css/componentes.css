@@ -1,0 +1,189 @@
+/* componentes.css — Ejercicio 2: componentes reutilizables BEM-ish (D-3).
+ * Versión ESTÁTICA (decisión explícita del usuario "entonces estatico"):
+ * SIN :target, SIN transiciones/animaciones decorativas.
+ * Solo CSS nativo, sin JS (R-06). Clases reservadas para JS futuro (Ej.3–6)
+ * sin comportamiento: .esta-oculto, .mensaje--exito.
+ */
+
+/* Tarjeta de libro del catálogo (cada article de #catalogo-lista). */
+.tarjeta-libro {
+  background-color: var(--color-fondo-tarjeta);
+  border: 1px solid var(--color-borde);
+  border-radius: 0.5rem;
+  padding: var(--espaciado-m);
+  min-width: 0;
+}
+
+.tarjeta-libro h4 {
+  margin-top: 0;
+  color: var(--color-acento);
+}
+
+.tarjeta-libro p {
+  margin-block: var(--espaciado-s);
+}
+
+/* Formularios (ambos form) + pares etiqueta/control. */
+.formulario {
+  background-color: var(--color-fondo-tarjeta);
+  border: 1px solid var(--color-borde);
+  border-radius: 0.5rem;
+  padding: var(--espaciado-m);
+}
+
+/* Bloque campo (par etiqueta+control). En el HTML del Ej.1 no hay nodo
+ * envolvente (solo se permiten atributos class + envolventes de tabla),
+ * así que hoy se aplica por piezas (.campo__etiqueta/.campo__control);
+ * .campo queda definido para futuros formularios sin romper la convención. */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaciado-s);
+  min-width: 0;
+}
+
+.campo__etiqueta {
+  font-weight: 700;
+}
+
+.campo__control,
+.formulario input,
+.formulario select {
+  font: inherit;
+  color: var(--color-texto);
+  background-color: var(--color-fondo-tarjeta);
+  border: 1px solid var(--color-borde);
+  border-radius: 0.25rem;
+  padding: var(--espaciado-s);
+}
+
+/* Botones: .boton--peligro SIEMPRE con texto (nunca solo color/forma). */
+.boton {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid var(--color-acento);
+  border-radius: 0.25rem;
+  padding: var(--espaciado-s) var(--espaciado-m);
+  background-color: var(--color-fondo-tarjeta);
+  color: var(--color-acento);
+}
+
+.boton--primario {
+  background-color: var(--color-acento);
+  border-color: var(--color-acento);
+  color: var(--color-acento-texto);
+}
+
+.boton--peligro {
+  background-color: var(--color-error);
+  border-color: var(--color-error);
+  color: #ffffff;
+}
+
+/* Tablas: estilos + envolvente con scroll propio (R-02/D-5).
+ * caption/thead/th scope del HTML quedan intactos (solo CSS aquí). */
+.tabla-contenedor {
+  overflow-x: auto;
+  border: 1px solid var(--color-borde);
+  border-radius: 0.5rem;
+  background-color: var(--color-fondo-tarjeta);
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--color-fondo-tarjeta);
+}
+
+.tabla caption {
+  text-align: left;
+  font-weight: 700;
+  padding: var(--espaciado-s);
+}
+
+.tabla th,
+.tabla td {
+  padding: var(--espaciado-s);
+  text-align: left;
+  border-top: 1px solid var(--color-borde);
+  vertical-align: top;
+}
+
+.tabla thead th {
+  border-top: 0;
+  border-bottom: 2px solid var(--color-acento);
+  white-space: nowrap;
+}
+
+/* Mensajes de estado (contenedores role="status"): texto + color/borde,
+ * NUNCA solo color (R-03). Legibles en escala de grises. */
+.mensaje {
+  border: 1px solid var(--color-borde);
+  border-left-width: 0.375rem;
+  border-radius: 0.25rem;
+  padding: var(--espaciado-s) var(--espaciado-m);
+  background-color: var(--color-fondo-tarjeta);
+  color: var(--color-texto);
+}
+
+.mensaje:empty {
+  display: none;
+}
+
+.mensaje--error {
+  border-color: var(--color-error);
+  background-color: var(--color-fondo-error);
+  color: var(--color-error);
+  font-weight: 700;
+}
+
+.mensaje--exito {
+  border-color: var(--color-exito);
+  background-color: var(--color-fondo-exito);
+  color: var(--color-exito);
+  font-weight: 700;
+}
+
+/* Reservada para el JS futuro (Ej.3–6): este change NO la activa. */
+.esta-oculto {
+  display: none;
+}
+
+/* Navegación principal: barra cohesiva con la paleta (D-3).
+ * Versión ESTÁTICA: hover/focus INSTANTÁNEOS, sin transiciones ni :target.
+ * Contraste: blanco sobre acento #7f1d1d = 10.02:1 (ver base.css). */
+.navegacion {
+  background-color: var(--color-acento);
+  border-radius: 0.5rem;
+  padding: var(--espaciado-s) var(--espaciado-m);
+}
+
+.navegacion a {
+  display: inline-block;
+  padding: var(--espaciado-s) var(--espaciado-m);
+  color: var(--color-acento-texto);
+  text-decoration: none;
+  border-radius: 0.25rem;
+}
+
+.navegacion a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+/* Foco visible con reemplazo sobre fondo oscuro (R-05): el outline global
+ * usa --color-acento y no se vería sobre la barra; aquí se reemplaza por
+ * blanco, nunca se suprime sin reemplazo. */
+.navegacion a:focus-visible {
+  outline: 3px solid var(--color-acento-texto);
+  outline-offset: 2px;
+}
+
+/* Enlace de navegación de la vista actual: estático en el HTML del Ej.1
+ * (aria-current="page"); el JS del Ej.3 lo gestionará dinámicamente.
+ * Sin :target por decisión explícita de versión estática. */
+.navegacion a.navegacion__enlace--activo {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
