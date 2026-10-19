@@ -139,23 +139,16 @@
       <h2 id="ventas-titulo">Ventas</h2>
       <h3>Cliente de la venta</h3>
       <label class="campo__etiqueta" for="venta-cliente">Cliente</label>
-      <select class="campo__control" id="venta-cliente" name="cliente">
-        <option value="ana">Ana Pérez Ejemplo</option>
-        <option value="bruno">Bruno Gómez Muestra</option>
-      </select>
+      <select class="campo__control" id="venta-cliente" name="cliente"></select>
       <h3>Renglones de la venta</h3>
       <label class="campo__etiqueta" for="venta-libro">Libro</label>
-      <select class="campo__control" id="venta-libro" name="libro">
-        <option value="senderos">El jardín de los senderos</option>
-        <option value="astronomia">Manual básico de astronomía</option>
-        <option value="cuentos">Cuentos breves para tardes largas</option>
-      </select>
+      <select class="campo__control" id="venta-libro" name="libro"></select>
       <label class="campo__etiqueta" for="venta-cantidad">Cantidad</label>
       <input class="campo__control" id="venta-cantidad" type="number" name="cantidad" min="1" step="1" value="1">
       <button id="venta-agregar" class="boton boton--primario" type="button">Agregar renglón</button>
       <div class="tabla-contenedor">
-        <table class="tabla" id="ventas-renglones" data-ejemplo="true">
-        <caption>Renglones de la venta en curso (ejemplo ficticio)</caption>
+        <table class="tabla" id="ventas-renglones">
+        <caption>Renglones de la venta en curso</caption>
         <thead>
           <tr>
             <th scope="col">Libro</th>
@@ -165,30 +158,21 @@
             <th scope="col">Acciones</th>
           </tr>
         </thead>
-        <tbody>
-          <tr data-ejemplo="true">
-            <td>El jardín de los senderos</td>
-            <td>1</td>
-            <td>$12500</td>
-            <td>$12500</td>
-            <td><button type="button" class="boton boton--peligro">Quitar renglón</button></td>
-          </tr>
-        </tbody>
+        <tbody></tbody>
         </table>
       </div>
       <h3>Resumen de la venta</h3>
-      <div id="ventas-total" class="mensaje">Total: $12500 (ejemplo ficticio)</div>
-      <button id="ventas-confirmar" class="boton boton--primario" type="submit">Confirmar venta</button>
-      <button id="ventas-cancelar" class="boton boton--peligro" type="reset">Cancelar venta</button>
+      <div id="ventas-total" class="mensaje"></div>
+      <button id="ventas-confirmar" class="boton boton--primario" type="button">Confirmar venta</button>
+      <button id="ventas-cancelar" class="boton boton--peligro" type="button">Cancelar venta</button>
       <div id="ventas-mensaje" role="status" class="mensaje"></div>
     </section>
     <section id="vista-historial" class="vista" aria-labelledby="historial-titulo">
       <h2 id="historial-titulo">Historial</h2>
       <h3>Ventas registradas</h3>
-      <p>Nota: las ventas siguientes son datos ficticios de ejemplo.</p>
       <div class="tabla-contenedor">
-        <table class="tabla" id="historial-tabla" data-ejemplo="true">
-        <caption>Historial de ventas de ejemplo (datos ficticios)</caption>
+        <table class="tabla" id="historial-tabla">
+        <caption>Historial de ventas confirmadas</caption>
         <thead>
           <tr>
             <th scope="col">Identificador</th>
@@ -198,36 +182,12 @@
             <th scope="col">Detalle</th>
           </tr>
         </thead>
-        <tbody>
-          <tr data-ejemplo="true">
-            <td>V-001</td>
-            <td>2026-09-12</td>
-            <td>Ana Pérez Ejemplo</td>
-            <td>$21400</td>
-            <td><button type="button" class="boton">Ver detalle</button></td>
-          </tr>
-          <tr data-ejemplo="true">
-            <td>V-002</td>
-            <td>2026-10-02</td>
-            <td>Bruno Gómez Muestra</td>
-            <td>$6750</td>
-            <td><button type="button" class="boton">Ver detalle</button></td>
-          </tr>
-        </tbody>
+        <tbody></tbody>
         </table>
       </div>
       <div id="historial-mensaje" role="status" class="mensaje"></div>
       <h3>Detalle de la venta</h3>
-      <div id="historial-detalle" data-ejemplo="true">
-        <p>Venta V-001 (ejemplo ficticio)</p>
-        <p>Fecha: 2026-09-12</p>
-        <p>Cliente: Ana Pérez Ejemplo</p>
-        <ul>
-          <li>El jardín de los senderos — cantidad 1 — $12500</li>
-          <li>Manual básico de astronomía — cantidad 1 — $8900</li>
-        </ul>
-        <p>Total: $21400</p>
-      </div>
+      <div id="historial-detalle"></div>
       <div id="historial-detalle-mensaje" role="status" class="mensaje"></div>
     </section>
   </main>
@@ -237,5 +197,6 @@
    <script src="js/datos.js"></script>
    <script src="js/catalogo.js"></script>
    <script src="js/altas.js"></script>
+   <script src="js/ventas.js"></script>
  </body>
 </html>

@@ -80,3 +80,7 @@ var clientes = [
   { id: "cli2", nombre: "Bruno Gómez Muestra", email: "bruno.muestra@ficticio.com" },
   { id: "cli3", nombre: "Carla Ruiz Prueba", email: "carla.prueba@ficticio.com" }
 ];
+
+// Ejercicio 5 — Ventas confirmadas. Cada renglón guarda una copia del título y
+// del precio unitario al confirmar (valor histórico, no se relee del catálogo).
+var ventas = [];

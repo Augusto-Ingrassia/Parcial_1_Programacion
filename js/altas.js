@@ -153,13 +153,19 @@ function renderOpcionesLibro() {
 function renderOpcionesCliente() {
   var sel = document.getElementById("venta-cliente");
   if (!sel) return;
+  var seleccionado = sel.value;
   while (sel.firstChild) sel.removeChild(sel.firstChild);
+  var vacia = document.createElement("option");
+  vacia.value = "";
+  vacia.textContent = "Seleccioná un cliente";
+  sel.appendChild(vacia);
   for (var i = 0; i < clientes.length; i++) {
     var opt = document.createElement("option");
     opt.value = clientes[i].id;
     opt.textContent = clientes[i].nombre;
     sel.appendChild(opt);
   }
+  sel.value = seleccionado;
 }
 
 function renderListadoLibros() {
@@ -224,6 +230,9 @@ function altaLibro(datos) {
     renderCatalogo(typeof libros !== "undefined" ? libros : []);
   }
   renderOpcionesLibro();
+  if (typeof renderOpcionesVentaLibro === "function") {
+    renderOpcionesVentaLibro();
+  }
   return { ok: true, error: "", id: libro.id };
 }
 
