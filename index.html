@@ -38,7 +38,7 @@
     <section id="vista-libros" class="vista" aria-labelledby="libros-titulo">
       <h2 id="libros-titulo">Libros</h2>
       <h3>Alta de libro</h3>
-      <form id="libros-form" class="formulario" action="#" method="get">
+      <form id="libros-form" class="formulario" action="#" method="get" novalidate>
         <label class="campo__etiqueta" for="libro-titulo">Título</label>
         <input class="campo__control" id="libro-titulo" type="text" name="titulo">
         <label class="campo__etiqueta" for="libro-isbn">ISBN</label>
@@ -102,7 +102,7 @@
     <section id="vista-clientes" class="vista" aria-labelledby="clientes-titulo">
       <h2 id="clientes-titulo">Clientes</h2>
       <h3>Alta de cliente</h3>
-      <form id="clientes-form" class="formulario" action="#" method="get">
+      <form id="clientes-form" class="formulario" action="#" method="get" novalidate>
         <label class="campo__etiqueta" for="cliente-nombre">Nombre completo</label>
         <input class="campo__control" id="cliente-nombre" type="text" name="nombre">
         <label class="campo__etiqueta" for="cliente-email">Correo electrónico</label>
@@ -195,6 +195,7 @@
     <p>Trabajo práctico — todos los datos mostrados son ejemplos ficticios.</p>
   </footer>
    <script src="js/datos.js"></script>
+   <script src="js/persistencia.js"></script>
    <script src="js/catalogo.js"></script>
    <script src="js/altas.js"></script>
    <script src="js/ventas.js"></script>

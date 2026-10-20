@@ -1,6 +1,6 @@
 // Ejercicio 5 — Venta simulada e historial.
 // Requiere js/datos.js y js/altas.js cargados antes.
-// Sin innerHTML con datos, sin fetch, sin persistencia (Ej. 6).
+// Sin innerHTML con datos, sin fetch; las ventas se guardan con js/persistencia.js (Ej. 6).
 
 // Renglones de la venta en curso: { libroId, cantidad } donde cantidad es el
 // texto tal como lo escribió el usuario (se valida al calcular y al confirmar).
@@ -246,6 +246,7 @@ function confirmarVenta() {
     return;
   }
   ventas.push(res.venta);
+  if (typeof guardarVentas === "function") guardarVentas();
   limpiarVenta();
   renderHistorial();
   mostrarMensajeEstado("ventas-mensaje", "Venta " + res.venta.id + " confirmada para " + res.venta.clienteNombre +

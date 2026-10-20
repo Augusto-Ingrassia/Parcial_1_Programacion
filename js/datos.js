@@ -1,5 +1,6 @@
 // Ejercicio 3 — Modelo de datos local (ficticio).
 // Solo declara las 5 colecciones; sin DOM, sin fetch, sin persistencia.
+// Libros, clientes y ventas son valores iniciales: js/persistencia.js los reemplaza por lo guardado (Ej. 6).
 var editoriales = [
   { id: "ed1", nombre: "Sur Ejemplar" },
   { id: "ed2", nombre: "Cosmos Ficticio" },

@@ -1,5 +1,6 @@
 // Ejercicio 4 — Altas y validación de libros y clientes.
 // Requiere js/datos.js y js/catalogo.js cargados antes.
+// Las altas correctas se guardan con js/persistencia.js (Ej. 6).
 
 function normalizarIsbn(isbn) {
   var base = isbn === undefined || isbn === null ? "" : String(isbn);
@@ -225,6 +226,7 @@ function altaLibro(datos) {
     precio: Number(datos.precio)
   };
   libros.push(libro);
+  if (typeof guardarLibros === "function") guardarLibros();
   renderListadoLibros();
   if (typeof renderCatalogo === "function") {
     renderCatalogo(typeof libros !== "undefined" ? libros : []);
@@ -245,6 +247,7 @@ function altaCliente(datos) {
     email: String(datos.email).trim()
   };
   clientes.push(cliente);
+  if (typeof guardarClientes === "function") guardarClientes();
   renderListadoClientes();
   renderOpcionesCliente();
   return { ok: true, error: "", id: cliente.id };
